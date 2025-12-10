@@ -173,3 +173,85 @@
         opacity: 0.3 !important;
     }
 }
+/* AURA SMOKE CANVAS */
+#smoke-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Encima del fondo negro */
+    opacity: 0.9;
+    mix-blend-mode: screen; /* Mezcla perfecta con el negro */
+}
+
+/* El grid debe verse sutil detrás o encima del humo */
+.hero-grid {
+    z-index: 2;
+    opacity: 0.15; /* Más sutil para que luzca el humo */
+}
+
+.hero-particles {
+    z-index: 3;
+}
+
+/* Asegurar que el contenido (texto) esté encima de todo */
+.hero-content {
+    position: relative;
+    z-index: 10 !important;
+}
+
+#smoke-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Fondo */
+    opacity: 1;
+    /* Esto hace que el negro del canvas desaparezca y solo quede la luz verde */
+    mix-blend-mode: screen; 
+}
+
+.hero-grid {
+    z-index: 2; /* Encima del humo */
+    opacity: 0.2; /* Muy sutil */
+}
+
+.hero-particles {
+    z-index: 3;
+}
+
+/* IMPORTANTE: Asegura que el texto esté encima de todo */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+/* Estilos para el contenedor de Unicorn Studio */
+#unicorn-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Al fondo de todo */
+    opacity: 1; /* Ajústalo si brilla demasiado (ej. 0.8) */
+}
+
+/* El grid debe estar encima pero sutil */
+.hero-grid {
+    z-index: 1;
+    opacity: 0.3; /* Ajusta según tu gusto */
+    pointer-events: none;
+}
+
+.hero-particles {
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* El contenido (texto) debe estar siempre encima */
+.hero-content {
+    position: relative;
+    z-index: 10 !important;
+}

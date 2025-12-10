@@ -423,4 +423,27 @@ document.addEventListener('DOMContentLoaded', () => {
         bar.style.height = '0';
         chartObserver.observe(bar);
     });
+    // ============================================
+// GLOW BACKGROUND SCROLL FADE
+// ============================================
+const glowBg = document.getElementById('glowBg');
+if (glowBg) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const opacity = Math.max(0.1, 1 - (scrollY / 600));
+        glowBg.style.opacity = opacity;
+    }, { passive: true });
+}
+// ============================================
+// SPOTLIGHT CARDS EFFECT
+// ============================================
+document.querySelectorAll('.spotlight-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
 });

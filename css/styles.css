@@ -1961,3 +1961,162 @@ a.contact-method:hover {
         display: none;
     }
 }
+
+/* ============================================
+   ANIMATED GLOW BACKGROUND (ENHANCED)
+   ============================================ */
+   .glow-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.glow-orb-1 {
+    top: -10%;
+    right: -5%;
+    width: 70vw;
+    height: 70vw;
+    max-width: 900px;
+    max-height: 900px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, rgba(0, 255, 136, 0) 70%);
+    opacity: 0.6;
+    animation: float-glow-1 20s ease-in-out infinite;
+}
+
+.glow-orb-2 {
+    bottom: -20%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, rgba(0, 255, 136, 0) 70%);
+    opacity: 0.5;
+    animation: float-glow-2 25s ease-in-out infinite;
+}
+
+@keyframes float-glow-1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(-5%, 10%) scale(1.15);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(5%, 5%) scale(0.9);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translate(-10%, -5%) scale(1.1);
+        opacity: 0.65;
+    }
+}
+
+@keyframes float-glow-2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    33% {
+        transform: translate(10%, -10%) scale(1.2);
+        opacity: 0.6;
+    }
+    66% {
+        transform: translate(-5%, 5%) scale(0.95);
+        opacity: 0.45;
+    }
+}
+/* ============================================
+   SPOTLIGHT CARDS (Services)
+   ============================================ */
+   .spotlight-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 255, 136, 0.06),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+/* Borde con spotlight */
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: radial-gradient(
+        300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 255, 136, 0.3),
+        transparent 40%
+    ) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.spotlight-card:hover::after {
+    opacity: 1;
+}
+
+/* Asegura que el contenido esté encima */
+.spotlight-card > * {
+    position: relative;
+    z-index: 3;
+}
+/* ============================================
+   SUBTLE GRID BACKGROUND
+   ============================================ */
+   .grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100px 100px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
